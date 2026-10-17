@@ -1,0 +1,331 @@
+:root {
+  /* Palette — draft tokens, see the branding notes in the .github repo. */
+  --graphite: #22262b;
+  --graphite-soft: #41474e;
+  --warm-white: #f7f4ee;
+  --surface: #fffdf9;
+  --signal-lime: #c3e600;
+  --signal-lime-ink: #2f3800;
+  --steel-blue: #35618e;
+  --steel-blue-deep: #274a6e;
+  --line: #e3ddd2;
+  --line-strong: #cfc7b8;
+
+  --max-width: 72rem;
+  --radius: 10px;
+
+  --font-sans: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --font-display: "Inter", "Helvetica Neue", Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--warm-white);
+  color: var(--graphite);
+  font-family: var(--font-sans);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+  margin: 0 0 0.5em;
+}
+
+h1 {
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--steel-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+code,
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--graphite-soft);
+  margin: 0 0 0.75rem;
+}
+
+/* Buttons / calls to action */
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.1rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1.5px solid transparent;
+}
+
+.btn-primary {
+  background: var(--signal-lime);
+  color: var(--signal-lime-ink);
+  border-color: var(--signal-lime);
+}
+
+.btn-primary:hover {
+  text-decoration: none;
+  filter: brightness(0.96);
+}
+
+.btn-ghost {
+  border-color: var(--line-strong);
+  color: var(--graphite);
+}
+
+.btn-ghost:hover {
+  text-decoration: none;
+  border-color: var(--graphite);
+}
+
+/* Site header */
+.site-header {
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 4rem;
+  flex-wrap: wrap;
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.25rem;
+  letter-spacing: -0.03em;
+  color: var(--graphite);
+  border-bottom: 4px solid var(--signal-lime);
+  padding-bottom: 1px;
+}
+
+.brand:hover {
+  text-decoration: none;
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+}
+
+.site-nav a {
+  color: var(--graphite-soft);
+}
+
+.site-nav a:hover {
+  color: var(--graphite);
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+  margin-top: 4rem;
+  font-size: 0.9rem;
+  color: var(--graphite-soft);
+}
+
+.site-footer .wrap {
+  padding-block: 2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Hero */
+.hero {
+  padding-block: clamp(3rem, 8vw, 6rem);
+  border-bottom: 1px solid var(--line);
+}
+
+.hero p.lead {
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  color: var(--graphite-soft);
+  max-width: 44ch;
+}
+
+.cta-row {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+/* Sections */
+section.band {
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+}
+
+section.band + section.band {
+  border-top: 1px solid var(--line);
+}
+
+/* Project card grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+a.card:hover {
+  text-decoration: none;
+  border-color: var(--line-strong);
+  transform: translateY(-2px);
+}
+
+.card .category {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--steel-blue);
+  margin-bottom: 0.4rem;
+}
+
+.card h3 {
+  margin-bottom: 0.3rem;
+  color: var(--graphite);
+}
+
+.card .compat {
+  font-size: 0.9rem;
+  color: var(--graphite-soft);
+  margin-bottom: 0.75rem;
+}
+
+.card .desc {
+  font-size: 0.95rem;
+  flex: 1;
+}
+
+/* Status chips */
+.chip {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  color: var(--graphite-soft);
+  margin-top: 0.75rem;
+  align-self: flex-start;
+}
+
+.chip.active {
+  border-color: var(--signal-lime);
+  background: color-mix(in srgb, var(--signal-lime) 22%, transparent);
+  color: var(--signal-lime-ink);
+}
+
+/* Capability model + prose tables */
+.prose {
+  max-width: 64ch;
+}
+
+.prose table,
+table.cap {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.92rem;
+  margin: 1rem 0;
+}
+
+table.cap th,
+table.cap td {
+  text-align: left;
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
+table.cap th {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--graphite-soft);
+}
+
+.note {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--steel-blue);
+  border-radius: var(--radius);
+  padding: 1rem 1.25rem;
+  font-size: 0.95rem;
+  margin: 1.5rem 0;
+}
+
+:focus-visible {
+  outline: 3px solid var(--steel-blue);
+  outline-offset: 2px;
+}

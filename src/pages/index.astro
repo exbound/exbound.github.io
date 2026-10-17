@@ -1,0 +1,86 @@
+---
+import Base from "../layouts/Base.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { targets } from "../data/targets";
+
+const featured = targets.filter((t) => t.featured);
+---
+
+<Base
+  title="Exbound"
+  description="Independent, compatible, open reimplementations of proprietary, abandoned, and monopolized scientific and engineering software."
+>
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Open scientific software reconstruction</p>
+      <h1>The software your work depends on<br />shouldn't be able to disappear.</h1>
+      <p class="lead">
+        Exbound rebuilds proprietary, abandoned, and monopolized scientific and
+        engineering software in the open — not just readers for the file
+        formats, but working implementations of what the original did: open,
+        edit, compute, fit, graph, script, save, and run.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="/projects/">Explore the targets</a>
+        <a class="btn btn-ghost" href="/contribute/">Contribute</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Why this matters</p>
+      <h2>Lock-in is a preservation problem</h2>
+      <div class="prose">
+        <p>
+          Instruments outlive their software. Licenses lapse, vendors
+          discontinue products, formats stay undocumented, and years of
+          measurements become unreadable or uncomputable. A working instrument
+          can be stranded by a dead application.
+        </p>
+        <p>
+          Reading the files back is necessary but not sufficient. Exbound aims
+          at the whole application — reproducing the computations, the
+          workflows, and the behavior — verified against documented reference
+          behavior, and described by compatibility rather than branding.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">Pilot &amp; first targets</p>
+      <h2>Where the work starts</h2>
+      <div class="card-grid">
+        {featured.map((target) => <ProjectCard target={target} />)}
+      </div>
+      <p style="margin-top:1.5rem">
+        <a class="btn btn-ghost" href="/projects/">See all twelve targets</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <p class="eyebrow">How progress is measured</p>
+      <h2>A capability model, not a percentage</h2>
+      <div class="prose">
+        <p>
+          Every target is assessed across nine capabilities — acquisition, data,
+          documents, computation, workflow, programmability, instrument
+          integration, the user-facing application, and overall replacement
+          coverage — each tracked as what has been <em>observed</em> in the
+          reference,
+          <em>implemented</em> independently, and <em>verified</em> against it.
+          No fabricated completion figures.
+        </p>
+        <p>
+          <a href="https://github.com/exbound/research/blob/main/docs/capability-model.md"
+            >Read the capability model →</a
+          >
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>

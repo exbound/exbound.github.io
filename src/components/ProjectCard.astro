@@ -1,0 +1,19 @@
+---
+import type { Target } from "../data/targets";
+import { statusLabel } from "../data/targets";
+
+interface Props {
+  target: Target;
+}
+
+const { target } = Astro.props;
+const active = target.status === "research-in-progress";
+---
+
+<a class="card" href={`/projects/${target.slug}/`}>
+  <span class="category">{target.category}</span>
+  <h3>{target.name}</h3>
+  <p class="compat">compatible with {target.compatibleWith}</p>
+  <p class="desc">{target.objective}</p>
+  <span class:list={["chip", { active }]}>{statusLabel[target.status]}</span>
+</a>

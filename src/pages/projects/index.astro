@@ -1,0 +1,46 @@
+---
+import Base from "../../layouts/Base.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { targets } from "../../data/targets";
+
+// Group by category for a scannable directory.
+const byCategory = new Map<string, typeof targets>();
+for (const t of targets) {
+  const list = byCategory.get(t.category) ?? [];
+  list.push(t);
+  byCategory.set(t.category, list);
+}
+const categories = [...byCategory.keys()].sort();
+---
+
+<Base
+  title="Projects"
+  description="The twelve scientific and engineering software targets Exbound is reconstructing, with the objective and initial approach for each."
+>
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Campaign inventory</p>
+      <h1>Twelve targets</h1>
+      <p class="lead">
+        Chosen for user lock-in and preservation value. Research across all
+        targets can proceed in parallel; independent implementation ramps up per
+        target once its dossier is precise enough to verify against.
+      </p>
+    </div>
+  </section>
+
+  {
+    categories.map((category) => (
+      <section class="band">
+        <div class="wrap">
+          <p class="eyebrow">{category}</p>
+          <div class="card-grid">
+            {byCategory.get(category)!.map((target) => (
+              <ProjectCard target={target} />
+            ))}
+          </div>
+        </div>
+      </section>
+    ))
+  }
+</Base>

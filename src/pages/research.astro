@@ -1,0 +1,66 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="Research"
+  description="Exbound's public research program: reconstruction methods, technical dossiers, verification, and the legal basis."
+>
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Public research program</p>
+      <h1>Evidence first</h1>
+      <p class="lead">
+        Reconstruction is driven by reproducible observation of what the
+        original software does — not by guesswork. The research repository holds
+        the methods, the per-target dossiers, and the verification standards.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://github.com/exbound/research"
+          >Open the research repository</a
+        >
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="prose">
+        <h2>What's in the research repository</h2>
+        <ul>
+          <li>
+            <a href="https://github.com/exbound/research/blob/main/dossiers/README.md"
+              >Target inventory</a
+            > — the twelve targets, with objective and initial approach.
+          </li>
+          <li>
+            <a href="https://github.com/exbound/research/blob/main/docs/capability-model.md"
+              >Capability model (C1–C9)</a
+            > — how reconstruction is measured, and the observed / implemented /
+            verified coverage triplet.
+          </li>
+          <li>
+            <a href="https://github.com/exbound/research/blob/main/dossiers/origin.md"
+              >Origin dossier</a
+            > — the worked example and pilot.
+          </li>
+          <li>
+            <a href="https://github.com/exbound/research/blob/main/docs/legal-basis.md"
+              >Legal basis</a
+            > — why compatible reconstruction on lawfully held copies is
+            defensible, and where the limits are.
+          </li>
+        </ul>
+
+        <h2>Evidence standards</h2>
+        <p>
+          Every claim carries the command, file, or source that produced it.
+          Statements are marked <strong>ESTABLISHED</strong> or
+          <strong>HYPOTHESIS / NEEDS-OBSERVATION</strong>, and never promoted
+          from one to the other without evidence. Negative results are welcome
+          and held to the same standard.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>

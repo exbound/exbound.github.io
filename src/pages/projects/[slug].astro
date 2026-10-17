@@ -1,0 +1,74 @@
+---
+import Base from "../../layouts/Base.astro";
+import { targets, statusLabel } from "../../data/targets";
+
+export function getStaticPaths() {
+  return targets.map((target) => ({
+    params: { slug: target.slug },
+    props: { target },
+  }));
+}
+
+const { target } = Astro.props;
+const active = target.status === "research-in-progress";
+---
+
+<Base title={target.name} description={target.objective}>
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">{target.category}</p>
+      <h1>{target.name}</h1>
+      <p class="lead">compatible with {target.compatibleWith}</p>
+      <p>
+        <span class:list={["chip", { active }]}>{statusLabel[target.status]}</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="prose">
+        <h2>Objective</h2>
+        <p>{target.objective}</p>
+
+        <h2>Initial technical approach</h2>
+        <p>{target.approach}</p>
+
+        {
+          target.dossierUrl ? (
+            <div class="note">
+              <p style="margin:0">
+                This target has a public research dossier with version
+                archaeology, a functional inventory, the reconstruction
+                architecture, and open work packages.
+              </p>
+              <p style="margin:0.5rem 0 0">
+                <a href={target.dossierUrl}>Read the dossier →</a>
+              </p>
+            </div>
+          ) : (
+            <div class="note">
+              <p style="margin:0">
+                No dossier yet — this target is awaiting research. A dossier is
+                created once there are verified findings, not before. Evidence,
+                sample files, and version details are the most useful first
+                contributions.
+              </p>
+              <p style="margin:0.5rem 0 0">
+                <a href="/contribute/">How to contribute evidence →</a>
+              </p>
+            </div>
+          )
+        }
+
+        <h2>Get involved</h2>
+        <p>
+          Propose findings or ask questions in the
+          <a href="https://github.com/exbound/research">research repository</a>.
+          See <a href="/contribute/">Contribute</a> for the routes by
+          background.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>

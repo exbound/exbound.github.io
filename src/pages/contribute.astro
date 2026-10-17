@@ -1,0 +1,92 @@
+---
+import Base from "../layouts/Base.astro";
+
+const routes = [
+  {
+    who: "Scientists & instrument owners",
+    can: "Contribute representative files, software versions, manuals, calibration records, expected results, and reproducible observations of what the original software does. You don't need to write code.",
+    caveat:
+      "Never upload proprietary installers or sensitive laboratory data to a public repository.",
+  },
+  {
+    who: "Developers & reverse engineers",
+    can: "Investigate file formats, numerical operations, instrument protocols, native binaries, and application behavior; build independent implementations and tests.",
+  },
+  {
+    who: "AI-assisted contributors",
+    can: "Take a bounded issue, follow the repository instructions, reproduce the failing test on public fixtures, implement, produce evidence, and submit a reviewed pull request.",
+  },
+];
+---
+
+<Base
+  title="Contribute"
+  description="How scientists, developers, and AI-assisted contributors can help reconstruct scientific software — routed by what you can offer."
+>
+  <section class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Get involved</p>
+      <h1>You don't have to be a reverse engineer</h1>
+      <p class="lead">
+        The scarce input is evidence: reproducible observations of what the
+        original software does. Find your route below.
+      </p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="card-grid">
+        {
+          routes.map((r) => (
+            <div class="card">
+              <h3>{r.who}</h3>
+              <p class="desc">{r.can}</p>
+              {r.caveat && (
+                <p class="compat" style="margin-top:0.75rem">
+                  <strong>Note:</strong> {r.caveat}
+                </p>
+              )}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="prose">
+        <h2>The rule that matters most</h2>
+        <p>
+          Never claim compatibility that has not been verified against
+          documented reference behavior. A pull request distinguishes what it
+          newly implements, which tests ran and their result, what reference
+          evidence backs the behavior, and what remains unverified.
+        </p>
+
+        <h2>Tests, two tiers</h2>
+        <p>
+          Implementation repositories expose <code>just test</code> —
+          deterministic tests that need no proprietary software and gate every
+          pull request — and <code>just test-reference</code>, optional tests
+          against a licensed original or a physical instrument. Reference tests
+          are never a hidden prerequisite.
+        </p>
+
+        <h2>Start here</h2>
+        <ul>
+          <li>
+            <a href="https://github.com/exbound/.github/blob/main/CONTRIBUTING.md"
+              >Contribution guide</a
+            >
+          </li>
+          <li>
+            <a href="https://github.com/exbound/research">Research repository</a>
+            — propose a target or a finding.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</Base>
