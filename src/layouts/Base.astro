@@ -27,18 +27,24 @@ const nav = [
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="alternate icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon-180.png" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Exbound" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={new URL("/social-preview-1280x640.png", Astro.site)} />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="640" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={new URL("/social-preview-1280x640.png", Astro.site)} />
   </head>
   <body>
     <header class="site-header">
       <div class="wrap">
-        <a class="brand" href="/">Exbound</a>
+        <a class="brand" href="/" aria-label="Exbound home"><img src="/lockup.svg" alt="Exbound" width="184" height="34" /></a>
         <nav class="site-nav" aria-label="Primary">
           {nav.map((item) => <a href={item.href}>{item.label}</a>)}
           <a href="https://github.com/exbound">GitHub</a>
