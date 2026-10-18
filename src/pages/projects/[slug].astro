@@ -35,6 +35,17 @@ const active = target.status === "research-in-progress";
         <p>{target.approach}</p>
 
         {
+          target.background && (
+            <>
+              <h2>Format and reconstruction</h2>
+              {target.background.map((para) => (
+                <p>{para}</p>
+              ))}
+            </>
+          )
+        }
+
+        {
           target.dossierUrl ? (
             <div class="note">
               <p style="margin:0">

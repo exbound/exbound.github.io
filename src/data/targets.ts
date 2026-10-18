@@ -13,6 +13,8 @@ export interface Target {
   objective: string;
   /** Initial technical approach (from the research inventory). */
   approach: string;
+  /** Longer format/reconstruction narrative, rendered as its own section. */
+  background?: string[];
   status: TargetStatus;
   /** Shown on the homepage featured row. */
   featured?: boolean;
@@ -35,6 +37,11 @@ export const targets: Target[] = [
       "An independent Origin-compatible data-analysis and plotting environment — native projects, fitting, transforms, and graphing.",
     approach:
       "Project grammar, fitting operations, transformations, and graph semantics; build on the open LabPlot line where it already fits.",
+    background: [
+      "Origin stores its work in proprietary, undocumented project files: .opj (legacy) and .opju, the Unicode successor that has been the default since Origin 2018. Free tools can view and convert these files, but not recompute them.",
+      "Open-source readers — liborigin, used by LabPlot and SciDAVis — parse legacy .opj up to roughly the Origin-2017 generation, but they do not read .opju, and none of them recover how a result was computed: the fit model, inputs, and settings behind an analysis. Structurally, .opju replaced the legacy flat object stream with a typed, length-prefixed record stream, so a legacy .opj parser cannot walk it.",
+      "Reading modern .opju projects and reconstructing that analysis provenance is the core of Exbound's Origin work — an independent, clean-room reader built on the actively developed LabPlot line. This is early reverse-engineering: the header and object-name layer is verified against real sample files, and the rest is in progress.",
+    ],
     status: "research-in-progress",
     featured: true,
     dossierUrl: "https://github.com/exbound/research/blob/main/dossiers/origin.md",
